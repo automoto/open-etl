@@ -15,5 +15,7 @@ RUN mkdir /data
 # copy the content of the local src directory to the working directory
 COPY src/ .
 
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+
 # command to run on container start
-CMD [ "python", "./server.py" ]
+#CMD [ "python", "./server.py" ]

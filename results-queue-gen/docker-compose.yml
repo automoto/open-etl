@@ -9,6 +9,9 @@ services:
       - "127.0.0.1:4571:4571"
     networks:
       - default
+    expose:
+      - 4566
+      - 4571
     environment:
       - SERVICES=sqs
       - DEBUG=${DEBUG- }
