@@ -1,5 +1,6 @@
 version: "3.8"
 
+#TODO: switch to bridge network for other services to use
 services:
   localstack:
     container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
@@ -22,14 +23,14 @@ services:
     volumes:
       - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-  rqg-service:
-    build: .
-    volumes:
-      - "./data/:/data"
-    links:
-      - "localstack:rsq-aws"
-    depends_on:
-      - localstack
-    networks:
-      - default
+#  rqg-service:
+#    build: .
+#    volumes:
+#      - "./data/:/data"
+#    links:
+#      - "localstack:rsq-aws"
+#    depends_on:
+#      - localstack
+#    networks:
+#      - default
 
