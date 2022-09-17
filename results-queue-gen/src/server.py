@@ -1,5 +1,6 @@
 import boto3
 import json
+import os
 from collections import namedtuple
 
 
@@ -25,8 +26,7 @@ def send_message(sqs_client, sqs_queue_url, answer_id, message):
 
 
 def main():
-    # TODO: switch to env var
-    filepath = '/Users/mydev/code/open-etl/results-queue-gen/data/IPIP300.dat'
+    filepath = os.environ.get('DATA_FILE')
     ParsedRow = namedtuple('ParsedRow', 'case_id sex age country answers')
     positions = {
         'case_id': [0, 6],
@@ -56,9 +56,8 @@ def main():
     for record in ps_records:
         answer_id = record.case_id
         msg = generate_message(record)
-
         # ENV VAR
-        response = send_message(aws_client, queue_url, answer_id, generate_message(msg))
+        response = send_message(aws_client, queue_url, answer_id, msg)
         print("sent message: msg_id: {} answer_id: {}".format(response['MessageId'], answer_id))
 
 
