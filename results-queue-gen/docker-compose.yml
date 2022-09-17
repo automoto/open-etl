@@ -23,6 +23,7 @@ services:
     volumes:
       - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
+#TODO: make sure to add env var for data file
 #  rqg-service:
 #    build: .
 #    volumes:
