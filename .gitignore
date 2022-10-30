@@ -20,3 +20,4 @@ venv/
 
 # misc
 .idea/
+.DS_STORE
