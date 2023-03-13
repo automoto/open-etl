@@ -5,3 +5,6 @@ Open source implementations and architecture for different ETL workloads.
 
 to setup for first time create a queue:
 `aws --endpoint http://localhost:4556 sqs create-queue --queue-name results-queue --attributes MessageRetentionPeriod=1209600,ContentBasedDeduplication=false`
+
+restart benthos and docker:
+`docker-compose up --force-recreate --build --no-deps benthos`
