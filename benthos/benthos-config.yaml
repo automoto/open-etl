@@ -1,0 +1,8 @@
+input:
+  http_server: {}
+pipeline:
+  threads: 4
+  processors:
+    - mapping: 'root = {"id": this.user.id, "content": this.body.content}'
+output:
+  http_server: {}
